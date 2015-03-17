@@ -1,12 +1,15 @@
 # ActiveShipping CHANGELOG
 
+### 2015/03/17  
+* Select the container type when a container type is not specified on US to US rate requests: NONRECTANGULAR for cylinders and RECTANGULAR for other cases.
+
 ### v0.10.1
 
- - Canada Post PWS: Makes wrapper act more consistently with the rest of the API [jnormore]
- - UPS: Adds insurance charge to package object declarations [pbonnell]
- - USPS: Improves how unavailable delivery information is handled [cyu]
- - Shipment Packer: Prevents packing errors and consistently return an array when packing [christianblais]
- - General: Improves tests such that they work with ruby 2.0 [Sirupsen]
+* Canada Post PWS: Makes wrapper act more consistently with the rest of the API [jnormore]
+* UPS: Adds insurance charge to package object declarations [pbonnell]
+* USPS: Improves how unavailable delivery information is handled [cyu]
+* Shipment Packer: Prevents packing errors and consistently return an array when packing [christianblais]
+* General: Improves tests such that they work with ruby 2.0 [Sirupsen]
 
 ### 2011/04/21
 
