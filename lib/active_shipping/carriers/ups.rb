@@ -129,6 +129,7 @@ module ActiveShipping
       packages = Array(packages)
       access_request = build_access_request
       rate_request = build_rate_request(origin, destination, packages, options)
+			puts (access_request + rate_request)
       response = commit(:rates, save_request(access_request + rate_request), options[:test])
       parse_rate_response(origin, destination, packages, response, options)
     end
@@ -221,7 +222,7 @@ module ActiveShipping
         xml.RatingServiceSelectionRequest do
           xml.Request do
             xml.RequestAction('Rate')
-            xml.RequestOption('Shop')
+            xml.RequestOption('Rate')
             # not implemented: 'Rate' RequestOption to specify a single service query
             # xml.RequestOption((options[:service].nil? or options[:service] == :all) ? 'Shop' : 'Rate')
           end
@@ -252,6 +253,10 @@ module ActiveShipping
             #                   * Shipment/ScheduledDeliveryTime element
             #                   * Shipment/AlternateDeliveryTime element
             #                   * Shipment/DocumentsOnly element
+
+						xml.Service do
+							xml.Code("03")
+						end
 
             Array(packages).each do |package|
               options[:imperial] ||= IMPERIAL_COUNTRIES.include?(origin.country_code(:alpha2))
